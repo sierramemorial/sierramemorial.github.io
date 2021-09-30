@@ -1,3 +1,8 @@
-p {
+.title_text {
+  font-family: Ephesis;
   font-style: bold;
+}
+
+.body-text {
+  font-family: sans-serif;
 }
