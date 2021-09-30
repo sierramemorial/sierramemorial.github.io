@@ -6,14 +6,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ephesis">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ephesis|Lato">
 
   <script>
+
   </script>
 </head>
 
 <body>
-  <h1 class="title_text">Title</h1>
-  <p class="body-text">This is some text.</p>
+<div class="title-wrapper">
+  <h1 class="title_text">This is the Title Text</h1>
+</div>
+
+<div class="body-wrapper">
+  <div class="body-section">
+    <div class="body-section-title">
+      <h2>This is a section title.</h2>
+    </div>
+    <div class="body-section-text">
+      <p class="body-text">This is some text.</p>
+    </div>
+  </div>
+
+  <div class="slideshow1-wrapper">
+    <img class="slideshow1-image-active" src="images/slideshow1/sample1.jpg">
+    <img class="slideshow1-image-inactive" src="images/slideshow1/sample2.jpg">
+    <img class="slideshow1-image-inactive" src="images/slideshow1/sample3.jpg">
+    <div class="slideshow1-button-wrapper">
+      <button class="slideshow1-button-left" onclick="plusDivs(-1)">&#10094;</button>
+      <button class="slideshow1-button-num-active" onclick="setDivs(1)">1</button>
+      <button class="slideshow1-button-num-inactive" onclick="setDivs(2)">2</button>
+      <button class="slideshow1-button-num-inactive" onclick="setDivs(3)">3</button>
+      <button class="slideshow1-button-right" onclick="plusDivs(+1)">&#10095;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var slideshow1Index = 1;
+  showDivs(slideshow1Index);
+
+  function plusDivs(n) {
+    showDivs(slideshow1Index += n);
+  }
+
+  function showDivs(n) {
+    var i;
+    var x = document.querySelectorAll(".slideshow1-image-active, .slideshow1-image-inactive");
+    var y = document.querySelectorAll(".slideshow1-button-num-active, .slideshow1-button-num-inactive");
+    if (n > x.length) {slideshow1Index = 1}
+    if (n < 1) {slideshow1Index = x.length} ;
+    for (i = 0; i < x.length; i++) {
+      x[i].setAttribute("class", "slideshow1-image-inactive");
+      y[i].setAttribute("class", "slideshow1-button-num-inactive");
+    }
+    x[slideshow1Index-1].setAttribute("class", "slideshow1-image-active");
+    y[slideshow1Index-1].setAttribute("class", "slideshow1-button-num-active");
+  }
+
+  function setDivs(n) {
+    showDivs(slideshow1Index = n);
+  }
+</script>
+
+
 </body>
 </html>
